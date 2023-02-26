@@ -14,8 +14,8 @@ Cli
 
 Path
 - /src/app/modules/admin/component - after login
-- /src/app/modules/public/component - web layout
-- src/app/modules/services - create service
+
+- src/app/modules/services -service
 
 
 
