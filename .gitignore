@@ -1,0 +1,16 @@
+.svn
+.metadata
+.project
+nbproject
+dist
+/build/
+build
+nbbuild.xml
+src/java/mohdzulfadli.properties
+src/java/default.properties
+.settings/org.eclipse.core.resources.prefs
+src/java/default.properties
+.classpath
+build/**
+node_modules
+.angular

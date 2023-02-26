@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/sass/style";
+// Replace above style with this css file to enable RTL styles
+// @import "./assets/css/style.rtl";
+@import './assets/sass/plugins.scss';
+@import "./assets/sass/style.angular.scss";
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 13px !important;
+    font-weight: 400;
+    font-family: Poppins, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    background-color: transparent !important;
+    margin-bottom: 1%;
+    // 66c7c6
+}
+
+.toolbar h1{
+    color: #66c7c6 !important;
+}

@@ -1,0 +1,199 @@
+<!-- ######################## list ########################## -->
+
+<div class="card mb-5 mb-xl-10" *ngIf="!isForm">
+  <ngx-loading *ngIf="loader"
+  [show]="loader"
+  [config]="{ backdropBorderRadius: '3px' }"
+  ></ngx-loading>
+<!-- begin::Header -->
+<div class="card-header border-0 pt-5">
+    <h3 class="card-title align-items-start flex-column">
+      <span class="card-label fw-bolder fs-3 mb-1">Student Profile</span>
+      <span class="text-muted mt-1 fw-bold fs-7">List of Student Profiles</span>
+    </h3>
+
+    <div class="input-group-append">
+      <tr>  
+        Find By Course :<select class="form-select form-select-solid" formControlName="course"
+            class="form-select form-select-solid"
+            data-kt-select2="true"
+            data-placeholder="Select option"
+            data-allow-clear="true" 
+            (change)="changeCourse($event)">  
+              <option value="0">--ALL--</option>  
+                                <option *ngFor="let course of courselist"  
+                                        value={{course.id}}>  
+                                    {{course.name}}  
+                                </option>   
+          </select>   
+    </tr>
+    </div>
+    <div class="card-toolbar">
+      <!-- begin::Menu -->
+      <button class="btn btn-sm btn-primary fw-bolder" (click)="add()">
+        <i class="fa fa-plus mb-1"></i> Add User
+      </button>
+
+      
+      <!-- begin::Menu 2 -->
+      <!-- end::Menu 2 -->
+      <!-- end::Menu -->
+    </div>
+  </div>
+  <!-- end::Header -->
+  <!-- begin::Body -->
+  <div class="card-body py-3">
+    <!-- begin::Table container -->
+    <div class="table-responsive">
+      <!-- begin::Table -->
+      <table
+        class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3"
+      >
+        <!-- begin::Table head -->
+        <thead>
+          <tr class="fw-bolder text-muted">
+            
+            <th class="min-w-120px text-dark fw-bolder">Name</th>
+            <th class="min-w-120px text-dark fw-bolder">Age</th>
+            <th class="min-w-120px text-dark fw-bolder">Course</th>
+            <th class="min-w-120px text-dark fw-bolder">Matric No</th>            
+            <th class="min-w-100px text-dark fw-bolder text-end">Actions</th>
+          </tr>
+        </thead>
+        <!-- end::Table head -->
+        <!-- begin::Table body -->
+        <tbody>
+          <tr *ngFor="let i of list">
+            
+            <td>{{i?.name}}</td>
+            <td>{{i?.age}}</td>
+            <td>{{i?.course.name}}</td>
+            <td>{{i?.matricNo}}</td>
+            
+            <td class="text-end">
+              <a
+                href="javascript:void(0)" (click)="edit(i)"
+                class="
+                  btn btn-icon btn-bg-light btn-active-color-primary btn-sm
+                  me-1">
+                <span
+                  [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'"
+                  class="svg-icon svg-icon-3"></span>
+              </a>
+              <a href="javascript:void(0)" class=" btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 " (click)="delete(i.id)">
+                <span
+                  [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
+                  class="svg-icon svg-icon-3"></span>
+              </a>
+              <!-- <a
+                href="#"
+                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+              >
+                <span
+                  [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
+                  class="svg-icon svg-icon-3"
+                ></span>
+              </a> -->
+            </td>
+          </tr>
+      
+        </tbody>
+        <!-- end::Table body -->
+      </table>
+      <!-- end::Table -->
+    </div>
+    <!-- end::Table container -->
+  </div>
+  <!-- begin::Body -->
+</div>
+
+<!-- ######################## list ########################## -->
+
+
+<!-- ######################## form ########################## -->
+
+<div class="card mb-5 mb-xl-10" *ngIf="isForm">
+  <ngx-loading *ngIf="loader"
+  [show]="loader"
+  [config]="{ backdropBorderRadius: '3px' }"
+  ></ngx-loading>
+  <div
+    class="card-header"
+  >
+  <div class="card-title m-0 flex-column">
+      <h3 class="fw-bolder m-0">STUDENT PROFILE</h3>
+      <div class="fs-7 fw-bold text-danger">( All fields are mandatory )</div>
+  </div>
+  
+  </div>
+  <form [formGroup]="form" >
+  <div class="card-body">
+      <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"><span class="text-danger">*</span> Full Name</label>
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-12 fv-row">
+                <input type="text" class=" form-control form-control-lg form-control-solid mb-3 mb-lg-0 " placeholder="Full Name" name="fullname" formControlName="fullname"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"><span class="text-danger">*</span> Age</label>
+          <div class="col-lg-8 fv-row">
+            <input
+              type="text"
+              class="form-control form-control-lg form-control-solid"
+              placeholder="Age"
+              name="age" formControlName="age"
+            />
+          </div>
+        </div>
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label fw-bold fs-6"><span class="required"><span class="text-danger">*</span> Course</span></label>
+          <div class="col-lg-8 fv-row">
+            <select class="form-select form-select-solid" formControlName="course" name="course"
+            class="form-select form-select-solid"
+            data-kt-select2="true"
+            data-placeholder="Select option"
+            data-allow-clear="true" 
+           >  
+              <option value="0">--Select--</option>  
+                                <option *ngFor="let course of courselist"  
+                                        value={{course.id}} [selected]="course.id ==course">  
+                                    {{course.name}}  
+                                </option>   
+          </select> 
+        </div>  </div> 
+         
+        
+
+        <div class="row mb-6">
+          <label class="col-lg-4 col-form-label required fw-bold fs-6"><span class="text-danger">*</span> Matric No</label>
+          <div class="col-lg-8 fv-row">
+            <input
+              type="text"
+              class="form-control form-control-lg form-control-solid"
+              placeholder="Matric No"
+              name="matricNo" formControlName="matricNo"
+            />
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-end py-3 px-1">
+          <button (click)="cancel()"
+          type="button"
+          class="btn btn-sm btn-bg-light me-2">
+          Cancel
+        </button>
+
+          <button [disabled]="!form.valid" (click)="submit()"
+            type="button"
+            class="btn btn-sm btn-primary">
+            Save
+          </button>
+        </div>
+    </div>
+    </form>
+</div>
+
+<!-- ######################## form ########################## -->
